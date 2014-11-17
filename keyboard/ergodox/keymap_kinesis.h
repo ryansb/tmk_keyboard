@@ -23,13 +23,13 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      *   | LGui | RIGHT| LEFT | ~L1  |  ~L2 |                                       | ~L2  | ~L1  |   [  |   ]  | RGui |
      *   `----------------------------------'                                       `----------------------------------'
-     *                                        ,-------------.       ,---------------.
-     *                                        |Ctrl+A|      |       |      | Alt+Tab|
-     *                                 ,------|------|------|       |------+--------+------.
-     *                                 |      |      | Home |       | PgUp |        |      |
-     *                                 | Bkspc| Del  |------|       |------| Enter  | Space|
-     *                                 |      |/LShft| End  |       | PgDn | /Alt   | /Ctrl|
-     *                                 `--------------------'       `----------------------'
+     *                                        ,-------------.       ,-------------.
+     *                                        | Home | End  |       | PgUp |      |
+     *                                 ,------|------|------|       |------+------+------.
+     *                                 |      |      |      |       | PgDn |      |      |
+     *                                 | Bkspc| Del  |------|       |------| Enter| Space|
+     *                                 |      |/LShft| Ctl+A|       |AltTab| /Alt | /Ctrl|
+     *                                 `--------------------'       `--------------------'
      */
 
 
@@ -42,18 +42,18 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            LSFT, Z,    X,    C,    V,    B, DOWN,
            LGUI, LEFT, RGHT, FN10, FN1,
 
-                                            FN30,   NO,
-                                                  HOME,
-                                      BSPC, FN6, END,
+                                            HOME, END,
+                                                  NO,
+                                      BSPC, FN6,  FN30,
            //RIGHT
            TRNS, 6,    7,    8,    9,    0,    MINS,
            NO,   Y,    U,    I,    O,    P,    BSLS,
                  H,    J,    K,    L,    SCLN, QUOT,
            FN2,  N,    M,    COMM, DOT,  SLSH, RSFT,
                        FN1,  FN10, LBRC, RBRC, RGUI,
-           TRNS, FN31,
-           PGUP,
-           PGDN, FN7, FN8
+           PGUP, NO,
+           PGDN,
+           FN31, FN7, FN8
            ),
 
     // SYMBOLS
