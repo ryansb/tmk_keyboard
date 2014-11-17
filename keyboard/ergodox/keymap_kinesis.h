@@ -139,11 +139,10 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_LAYER_OFF(1, ON_RELEASE),                // FN3 - Layer 1 OFF
     ACTION_LAYER_ON(2, ON_RELEASE),                 // FN4 - Layer 2 ON
     ACTION_LAYER_OFF(2, ON_RELEASE),                // FN5 - Layer 2 OFF
-    ACTION_LAYER_SET(4, ON_BOTH),                   // FN6 - Layer 4
-    ACTION_LAYER_SET(5, ON_BOTH),                   // FN7 - Layer 5
-    ACTION_LAYER_SET(6, ON_BOTH),                   // FN8 - Layer 6
-    //#    ACTION_LAYER_TAP_KEY(KC_LCTL, KC_ESC),        // FN9 - Control/esc on tap
-    ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),        // FN9 - Control/esc on tap
+    ACTION_MODS_TAP_KEY(MOD_LSFT, KC_DEL),          // FN6 - delete/shift tap combo
+    ACTION_MODS_TAP_KEY(MOD_LALT, KC_ENT),          // FN7 - enter/alt tap combo
+    ACTION_MODS_TAP_KEY(MOD_LCTL, KC_SPC),          // FN8 - space/l-ctrl tap combo
+    ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),          // FN9 - Control/esc on tap
     ACTION_LAYER_MOMENTARY(1),                      // FN10 - Momentary Layer 1
 
     // SYMBOLS
@@ -166,12 +165,10 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),             // FN27 - :
     ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),             // FN28 - {
     ACTION_MODS_KEY(MOD_LSFT, KC_RBRC),             // FN29 - }
-    ACTION_MODS_KEY(MOD_LSFT, KC_SLSH),             // FN30 - ?
 
-    // Fancy tapping/toggling
-    ACTION_LAYER_TAP_KEY(1, KC_T),                  // FN3 - Layer 1 when holding T key
-
-
+    // MULTIKEY
+    ACTION_MODS_KEY(MOD_LCTL, KC_A),                 // FN30
+    ACTION_MODS_KEY(MOD_LALT, KC_TAB),               // FN31
 };
 
 void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
