@@ -10,55 +10,55 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        - ~L2 stays in mouse layer
     */
 
-    /* Keymap 0: Norman Layer
+    /* Keymap 0: Base Layer
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |   =    |   1  |   2  |   3  |   4  |   5  | ESC  |           |      |   6  |   7  |   8  |   9  |   0  |   -    |
+     * |   `    |   1  |   2  |   3  |   4  |   5  | ESC  |           |      |   6  |   7  |   8  |   9  |   0  |   -    |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * | Tab    |   Q  |   W  |   D  |   F  |   K  |  Up  |           |  L0  |   J  |   U  |   R  |   L  |   :  |   \    |
+     * |   =    |   Q  |   W  |   E  |   R  |   T  |  Up  |           |  L0  |   Y  |   U  |   I  |   O  |   P  |   \    |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * | BkSp   |   A  |   S  |   E  |   T  |   G  |------|           |------|   Y  |   N  |   I  |   O  |   H  |   '    |
+     * |  Tab   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
      * |--------+------+------+------+------+------|  Dn  |           |  L1  |------+------+------+------+------+--------|
-     * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   P  |   M  |   ,  |   .  |   /  | RShitf |
+     * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShitf |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | LGui |   `  |      | ~L1  |  ~L2 |                                       | ~L2  | ~L1  |   [  |   ]  | RGui |
+     *   | LGui |      |      | ~L1  |  ~L2 |                                       | ~L2  | ~L1  |   [  |   ]  | RGui |
      *   `----------------------------------'                                       `----------------------------------'
-     *                                        ,-------------.       ,-------------.
-     *                                        |  Lft | Rght |       |      |      |
-     *                                 ,------|------|------|       |------+------+------.
-     *                                 |      |      | Home |       | PgUp |      |      |
-     *                                 | LCtrl| LAlt |------|       |------| Enter| Space|
-     *                                 |      |      | End  |       | PgDn |      |      |
-     *                                 `--------------------'       `--------------------'
+     *                                        ,-------------.       ,---------------.
+     *                                        |Ctrl+A|      |       |      | Alt+Tab|
+     *                                 ,------|------|------|       |------+--------+------.
+     *                                 |      |      | Home |       | PgUp |        |      |
+     *                                 | Bkspc| Del  |------|       |------| Enter  | Space|
+     *                                 |      |/LShft| End  |       | PgDn | /Alt   | /Ctrl|
+     *                                 `--------------------'       `----------------------'
      */
 
 
-    // Norman Layer
+    // Base QWERTY Layer
 
     KEYMAP(
-           EQL,  1,    2,    3,    4,    5, ESC,
-           TAB,  Q,    W,    D,    F,    K, UP,
-           BSPC, A,    S,    E,    T,    G,
+           GRV,  1,    2,    3,    4,    5, ESC,
+           EQL,  Q,    W,    E,    R,    T, UP,
+           TAB,  A,    S,    D,    F,    G,
            LSFT, Z,    X,    C,    V,    B, DOWN,
            LGUI, GRV,  TRNS, FN10, FN1,
 
-                                            LEFT,  RGHT,
+                                            FN30,   NO,
                                                   HOME,
-                                      FN9, LALT, END,
+                                      BSPC, FN6, END,
            //RIGHT
-           TRNS, 6,    7,    8,    9,    0, MINS,
-           NO,  J,    U,    R,    L,    SCLN, BSLS,
-                 Y,    N,    I,    O,    H, QUOT,
-           FN2,  P,    M,    COMM, DOT,  SLSH, RSFT,
+           TRNS, 6,    7,    8,    9,    0,    MINS,
+           NO,   Y,    U,    I,    O,    P,    BSLS,
+                 H,    J,    K,    L,    SCLN, QUOT,
+           FN2,  N,    M,    COMM, DOT,  SLSH, RSFT,
                        FN1,  FN10, LBRC, RBRC, RGUI,
-           TRNS, TRNS,
+           TRNS, FN31,
            PGUP,
-           PGDN, ENT, SPC
+           PGDN, FN7, FN8
            ),
 
     // SYMBOLS
     KEYMAP(
-           FN0,  F1,  F2,   F3,   F4,   F5,   ESC,
+           FN0,  F1,   F2,   F3,   F4,   F5,   ESC,
            TRNS, MINS, EQL,  PPLS, PAST, SLSH, TRNS,
            FN22, GRV,  QUOT, FN11, DOT,  COMM,
            TRNS, FN12, FN13, FN14, FN15, FN16, TRNS,
@@ -68,9 +68,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      TRNS,
                                          TRNS, TRNS, TRNS,
         // right hand
-           TRNS, F6,   F7,   F8,   F9,   F10,   F11,
+           F12, F6,   F7,   F8,   F9,   F10,   F11,
            FN3,  FN23, FN24, LBRC, RBRC, BSLS, F12,
-                 FN25, FN26, FN20, FN21, FN27, FN30,
+                 FN25, FN26, FN20, FN21, FN27, TRNS,
            FN4,  FN17, FN18, FN28, FN29, SCLN, TRNS,
                        TRNS, TRNS, TRNS, TRNS, TRNS,
            TRNS, TRNS,
@@ -79,14 +79,14 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     KEYMAP(  // Layer2: Mouse Left/ Arrows Right
         // left hand
-           NO,   NO,   BTN1, BTN2, BTN3, NO,   TRNS,
-           NO,   NO,   WH_U, MS_U, WH_D, NO,   NO,
-           NO,   NO,   MS_L, MS_D, MS_R, NO,
-           NO,   NO,   BTN1, BTN2, BTN3, NO,   NO,
-           NO,   NO,   NO,   NO,   NO,
+           FN0,   NO,   BTN1, BTN2, BTN3, NO,   TRNS,
+           NO,    NO,   WH_U, MS_U, WH_D, NO,   NO,
+           NO,    NO,   MS_L, MS_D, MS_R, NO,
+           NO,    NO,   BTN1, BTN2, BTN3, NO,   NO,
+           NO,    NO,   NO,   NO,   NO,
                                                NO,   NO,
                                                      NO,
-                                         NO,   NO,   NO,
+                                         BTN1, BTN2, BTN3,
         // right hand
            NO,   NO,   BTN1, BTN2, BTN3, NO,   NO,
            FN5,  INS,  HOME, UP,   PGUP, NO,   NO,
