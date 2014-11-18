@@ -24,11 +24,11 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *   | LGui | RIGHT| LEFT | ~L1  |  ~L2 |                                       | ~L2  | ~L1  |   [  |   ]  | RGui |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
-     *                                        | Home | End  |       | PgUp |      |
+     *                                        |C+A+<-| Home |       | PgUp |C+A+->|
      *                                 ,------|------|------|       |------+------+------.
-     *                                 |      |      |      |       | PgDn |      |      |
+     *                                 |      |      | End  |       | PgDn |      |      |
      *                                 | Bkspc| Del  |------|       |------| Enter| Space|
-     *                                 |      |/LShft| Ctl+A|       |AltTab| /Alt | /Ctrl|
+     *                                 | /Ctrl|/Alt  | Ctl+A|       |AltTab| /Ctrl|      |
      *                                 `--------------------'       `--------------------'
      */
 
@@ -42,18 +42,18 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            LSFT, Z,    X,    C,    V,    B, DOWN,
            LGUI, LEFT, RGHT, FN10, FN1,
 
-                                            HOME, END,
-                                                  NO,
-                                      BSPC, FN6,  FN30,
+                                           FN4,  HOME,
+                                                 END,
+                                      FN8, FN6,  FN30,
            //RIGHT
            TRNS, 6,    7,    8,    9,    0,    MINS,
            NO,   Y,    U,    I,    O,    P,    BSLS,
                  H,    J,    K,    L,    SCLN, QUOT,
            FN2,  N,    M,    COMM, DOT,  SLSH, RSFT,
                        FN1,  FN10, LBRC, RBRC, RGUI,
-           PGUP, NO,
+           PGUP, FN5,
            PGDN,
-           FN31, FN7, FN8
+           FN31, FN7, SPC
            ),
 
     // SYMBOLS
@@ -71,7 +71,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            F12, F6,   F7,   F8,   F9,   F10,   F11,
            FN3,  FN23, FN24, LBRC, RBRC, BSLS, F12,
                  FN25, FN26, FN20, FN21, FN27, TRNS,
-           FN4,  FN17, FN18, FN28, FN29, SCLN, TRNS,
+           TRNS,  FN17, FN18, FN28, FN29, SCLN, TRNS,
                        TRNS, TRNS, TRNS, TRNS, TRNS,
            TRNS, TRNS,
            TRNS,
@@ -89,7 +89,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                          BTN1, BTN2, BTN3,
         // right hand
            NO,   NO,   BTN1, BTN2, BTN3, NO,   NO,
-           FN5,  INS,  HOME, UP,   PGUP, NO,   NO,
+           TRNS,  INS,  HOME, UP,   PGUP, NO,   NO,
                  DEL,  LEFT, DOWN, RGHT, NO,   NO,
            NO,   NO,   END,  DOWN, PGDN, NO,   NO,
                        TRNS, TRNS, NO,   NO,   NO,
@@ -137,11 +137,11 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_LAYER_MOMENTARY(2),                      // FN1 - Momentary L2
     ACTION_LAYER_ON(1, ON_RELEASE),                 // FN2 - Layer 1 ON
     ACTION_LAYER_OFF(1, ON_RELEASE),                // FN3 - Layer 1 OFF
-    ACTION_LAYER_ON(2, ON_RELEASE),                 // FN4 - Layer 2 ON
-    ACTION_LAYER_OFF(2, ON_RELEASE),                // FN5 - Layer 2 OFF
-    ACTION_MODS_TAP_KEY(MOD_LSFT, KC_DEL),          // FN6 - delete/shift tap combo
-    ACTION_MODS_TAP_KEY(MOD_LALT, KC_ENT),          // FN7 - enter/alt tap combo
-    ACTION_MODS_TAP_KEY(MOD_LCTL, KC_SPC),          // FN8 - space/l-ctrl tap combo
+    ACTION_MODS_KEY(MOD_LCTL | MOD_LALT, KC_LEFT),  // FN4 - Ctrl+Alt+left
+    ACTION_MODS_KEY(MOD_LCTL | MOD_LALT, KC_RIGHT), // FN5 - Ctrl+Alt+right
+    ACTION_MODS_TAP_KEY(MOD_LALT, KC_DEL),          // FN6 - delete/alt tap combo
+    ACTION_MODS_TAP_KEY(MOD_LALT, KC_ENT),          // FN7 - enter/l-ctrl tap combo
+    ACTION_MODS_TAP_KEY(MOD_LCTL, KC_BSPC),         // FN8 - backspace/l-ctrl tap combo
     ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),          // FN9 - Control/esc on tap
     ACTION_LAYER_MOMENTARY(1),                      // FN10 - Momentary Layer 1
 
