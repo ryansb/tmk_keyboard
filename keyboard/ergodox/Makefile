@@ -103,23 +103,7 @@ include $(TMK_DIR)/rules.mk
 dvorak: OPT_DEFS += -DKEYMAP_DVORAK
 dvorak: all
 
-colemak: OPT_DEFS += -DKEYMAP_COLEMAK
-colemak: all
 
-workman: OPT_DEFS += -DKEYMAP_WORKMAN
-workman: all
-
-cub: OPT_DEFS += -DKEYMAP_CUB
-cub: all
-
-simon: OPT_DEFS += -DKEYMAP_SIMON
-simon: all
-
-plover: OPT_DEFS += -DKEYMAP_PLOVER
-plover: all
-
-norman: OPT_DEFS += -DKEYMAP_NORMAN
-norman: all
 
 kinesis: OPT_DEFS += -DKEYMAP_KINESIS
 kinesis: all
