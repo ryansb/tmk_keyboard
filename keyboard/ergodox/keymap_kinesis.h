@@ -5,23 +5,18 @@
 
 static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    /* TODO
-       - L1 push goes to wrong layer (mouse instead of characters)
-       - ~L2 stays in mouse layer
-    */
-
     /* Keymap 0: Base Layer
      *
-     * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |   `    |   1  |   2  |   3  |   4  |   5  | ESC  |           |      |   6  |   7  |   8  |   9  |   0  |   -    |
-     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |   =    |   Q  |   W  |   E  |   R  |   T  |  Up  |           |  L0  |   Y  |   U  |   I  |   O  |   P  |   \    |
-     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |  Tab   |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  |   '    |
-     * |--------+------+------+------+------+------|  Dn  |           |  L1  |------+------+------+------+------+--------|
-     * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RShitf |
-     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | LGui | RIGHT| LEFT | ~L1  |  ~L2 |                                       | ~L2  | ~L1  |   [  |   ]  | RGui |
+     * ,--------------------------------------------------.         ,----------------------------------------------------.
+     * |   `    |   1  |   2  |   3  |   4  |   5  | ESC  |         |¯\_ツ_/¯|   6  |   7  |   8  |   9  |   0  |   -    |
+     * |--------+------+------+------+------+-------------|         |--------+------+------+------+------+------+--------|
+     * |   =    |   Q  |   W  |   E  |   R  |   T  |  Up  |         |    |   |   Y  |   U  |   I  |   O  |   P  |   \    |
+     * |--------+------+------+------+------+------|      |         |        |------+------+------+------+------+--------|
+     * |  Tab   |   A  |   S  |   D  |   F  |   G  |------|         |--------|   H  |   J  |   K  |   L  |   ;  |   '    |
+     * |--------+------+------+------+------+------|  Dn  |         |(╯°□°)╯ |------+------+------+------+------+--------|
+     * | LShift |   Z  |   X  |   C  |   V  |   B  |      |         |        |   N  |   M  |   ,  |   .  |   /  | RShitf |
+     * `--------+------+------+------+------+-------------'         `---------------+------+------+------+------+--------'
+     *   | LGui | RIGHT| LEFT |   |  | Space|                                       |      | ~L1  |   [  |   ]  | RGui |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |C+A+<-| Home |       | PgUp |C+A+->|
@@ -40,16 +35,16 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            EQL,  Q,    W,    E,    R,    T, UP,
            TAB,  A,    S,    D,    F,    G,
            LSFT, Z,    X,    C,    V,    B, DOWN,
-           LGUI, LEFT, RGHT, FN10, FN1,
+           LGUI, LEFT, RGHT, FN23, SPC,
 
                                            FN4,  HOME,
                                                  END,
                                       FN8, FN6,  FN30,
            //RIGHT
-           TRNS, 6,    7,    8,    9,    0,    MINS,
-           NO,   Y,    U,    I,    O,    P,    BSLS,
+           FN27, 6,    7,    8,    9,    0,    MINS,
+           FN23, Y,    U,    I,    O,    P,    BSLS,
                  H,    J,    K,    L,    SCLN, QUOT,
-           FN2,  N,    M,    COMM, DOT,  SLSH, RSFT,
+           FN26, N,    M,    COMM, DOT,  SLSH, RSFT,
                        FN1,  FN10, LBRC, RBRC, RGUI,
            PGUP, FN5,
            PGDN,
@@ -70,7 +65,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
            F12, F6,   F7,   F8,   F9,   F10,   F11,
            FN3,  FN23, FN24, LBRC, RBRC, BSLS, F12,
-                 FN25, FN26, FN20, FN21, FN27, TRNS,
+                 FN25, FN26, FN20, FN21, TRNS, TRNS,
            TRNS,  FN17, FN18, FN28, FN29, SCLN, TRNS,
                        TRNS, TRNS, TRNS, TRNS, TRNS,
            TRNS, TRNS,
@@ -126,7 +121,13 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* id for user defined functions */
 enum function_id {
-    TEENSY_KEY,
+    TEENSY_KEY
+};
+
+enum macro_id {
+    MACRO_SHRUG,
+    MACRO_REQUAL,
+    MACRO_FLIP,
 };
 
 /*
@@ -147,7 +148,7 @@ static const uint16_t PROGMEM fn_actions[] = {
 
     // SYMBOLS
     ACTION_MODS_KEY(MOD_LSFT, KC_QUOT),             // FN11 - "
-    ACTION_MODS_KEY(MOD_LSFT, KC_1),                // FN12 - !
+    ACTION_MACRO(MACRO_REQUAL),                     // FN12 - <-
     ACTION_MODS_KEY(MOD_LSFT, KC_2),                // FN13 - @
     ACTION_MODS_KEY(MOD_LSFT, KC_3),                // FN14 - #
     ACTION_MODS_KEY(MOD_LSFT, KC_4),                // FN15 - $
@@ -161,8 +162,8 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_MODS_KEY(MOD_LSFT, KC_BSLS),             // FN23 - |
     ACTION_MODS_KEY(MOD_LSFT, KC_MINS),             // FN24 - _
     ACTION_MODS_KEY(MOD_LSFT, KC_COMM),             // FN25 - <
-    ACTION_MODS_KEY(MOD_LSFT, KC_DOT),              // FN26 - >
-    ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),             // FN27 - :
+    ACTION_MACRO(MACRO_FLIP),                       // FN26 - (╯°□°)╯︵┻━┻
+    ACTION_MACRO(MACRO_SHRUG),                      // FN27 - ¯\_ツ_/¯
     ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),             // FN28 - {
     ACTION_MODS_KEY(MOD_LSFT, KC_RBRC),             // FN29 - }
 
@@ -183,4 +184,110 @@ void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
         bootloader_jump(); // should not return
         print("not supported.\n");
     }
+}
+
+/*
+ * Macro definition
+ */
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+    keyevent_t event = record->event;
+
+    if (event.pressed) {
+        switch (id) {
+        case MACRO_SHRUG:
+            //return MACRO( D(LSFT), T(H), U(LSFT), T(E), D(L), U(L), D(L), U(L), D(O), U(O), D(DOT), U(DOT), D(W), U(W), D(O), U(O), D(R), U(R), D(L), U(L), D(D), U(D), D(ENTER), U(ENTER), END); // types "Hello.world{ENTER}"
+            return MACRO(
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    // left hand // ¯
+                    T(X),
+                    T(A),
+                    T(F), T(ENTER),
+                    // backslash
+                    T(BSLS),
+                    // underscore
+                    D(LSFT),
+                    T(MINS),
+                    U(LSFT),
+                    // ツ
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    T(3),
+                    T(0),
+                    T(C),
+                    T(4), T(ENTER),
+                    // underscore
+                    D(LSFT),
+                    T(MINS),
+                    U(LSFT),
+                    // slash /
+                    T(SLSH),
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    // right hand // ¯
+                    T(X),
+                    T(A),
+                    T(F), T(ENTER),
+                    END);
+        case MACRO_REQUAL:
+            return MACRO(
+                    D(LSFT), T(COMM), U(LSFT),
+                    T(MINS),
+                    END);
+        case MACRO_FLIP:
+            return MACRO(
+                    D(LSFT), T(9), U(LSFT),
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    // left hand // ╯
+                    T(2),
+                    T(5),
+                    T(6),
+                    T(F), T(ENTER),
+                    // left eye // °
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    T(B),
+                    T(0), T(ENTER),
+                    // mouth // □
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    T(2),
+                    T(5),
+                    T(A),
+                    T(1), T(ENTER),
+                    // right eye // °
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    T(B),
+                    T(0), T(ENTER),
+                    D(LSFT), T(0), U(LSFT),
+                    // right hand // ╯
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    T(2),
+                    T(5),
+                    T(6),
+                    T(F), T(ENTER),
+                    // flip arc // ︵
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    T(F),
+                    T(E),
+                    T(3),
+                    T(5), T(ENTER),
+                    // table leg 1 // ┻
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    T(2),
+                    T(5),
+                    T(3),
+                    T(B), T(ENTER),
+                    // table body // ━
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    T(2),
+                    T(5),
+                    T(0),
+                    T(1), T(ENTER),
+                    // table leg 2 // ┻
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
+                    T(2),
+                    T(5),
+                    T(3),
+                    T(B), T(ENTER),
+                    END);
+        }
+    }
+    return MACRO_NONE;
 }
