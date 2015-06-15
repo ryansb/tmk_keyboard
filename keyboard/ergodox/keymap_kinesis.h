@@ -16,7 +16,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|   [  |         |   ]    |------+------+------+------+------+--------|
      * | LShift |   Z  |   X  |   C  |   V  |   B  |      |         |        |   P  |   M  |   ,  |   .  |   /  | ~L1    |
      * `--------+------+------+------+------+-------------'         `---------------+------+------+------+------+--------'
-     *   | LGui |      |      |      | Space|                                       | RGHT | DOWN |  UP  | LEFT | ~L2  |
+     *   | LGui |      |      |   -  | Space|                                       | RGHT | DOWN |  UP  | LEFT | ~L2  |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |C+A+<-| Home |       | PgUp |C+A+->|
@@ -76,7 +76,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            EQL,  Q,    W,    D,    F,    K, FN20,
            TAB,  A,    S,    E,    T,    G,
            LSFT, Z,    X,    C,    V,    B, LBRC,
-           LGUI, TRNS, TRNS, TRNS, SPC,
+           LGUI, TRNS, TRNS, MINS, SPC,
 
                                            FN4,  HOME,
                                                  END,
@@ -85,7 +85,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
            MINS, 6,    7,    8,    9,    0,    FN27,
            FN21, J,    U,    R,    L,    SCLN, BSLS,
                  Y,    N,    I,    O,    H,    QUOT,
-           RBRC, P,    M,    COMM, DOT,  SLSH, FN1,
+           RBRC, P,    M,    COMM, DOT,  SLSH, FN10,
                        LEFT, DOWN, UP,   RGHT, RGUI,
            PGUP, FN5,
            PGDN,
@@ -115,23 +115,23 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     KEYMAP(  // Layer2: Mouse Left/ Arrows Right
         // left hand
-           FN0,   NO,   NO,   NO,   NO,   NO, NO,
-           NO,    NO,   WH_U, MS_U, WH_D, NO, NO,
-           NO,    NO,   MS_L, MS_D, MS_R, NO,
-           NO,    NO,   BTN1, BTN2, BTN3, NO, NO,
+           NO,    NO,   NO,   NO,   NO,   NO, NO,
+           NO,    NO,   NO,   NO,   NO,   NO, NO,
+           NO,    NO,   NO,   NO,   NO,   NO,
+           NO,    NO,   NO,   NO,   NO,   NO, NO,
            NO,    NO,   NO,   NO,   NO,
                                               NO,   NO,
                                                     NO,
-                                        BTN1, BTN2, BTN3,
+                                        NO,   NO,   NO,
         // right hand
-           NO,   NO,   BTN1, BTN2, BTN3, NO,   NO,
-           TRNS, INS,  HOME, UP,   PGUP, NO,   NO,
-                 DEL,  LEFT, DOWN, RGHT, NO,   NO,
-           NO,   NO,   END,  DOWN, PGDN, NO,   NO,
-                       TRNS, TRNS, NO,   NO,   NO,
+           NO,   NO,   NO,   NO,   NO,   NO,   NO,
+           NO,   NO,   NO,   NO,   NO,   NO,   NO,
+                 NO,   NO,   NO,   NO,   NO,   NO,
+           NO,   NO,   NO,   NO,   NO,   NO,   NO,
+                       NO,   NO,   NO,   NO,   NO,
            NO,   NO,
            NO,
-           NO,   TRNS,   NO
+           NO,   NO,   NO
     ),
 
     /* KEYMAP(  // LayerN: fully transparent */
@@ -190,6 +190,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     // SYMBOLS
     ACTION_MODS_KEY(MOD_LSFT, KC_QUOT),             // FN11 - "
     ACTION_MACRO(MACRO_REQUAL),                     // FN12 - <-
+    //ACTION_MODS_TAP_KEY(ACTION_MODS_KEY(MOD_LALT, KC_TAB), ACTION_LAYER_MOMENTARY(1)), // FN12 - either alttab or momentary layer 1
     ACTION_MODS_KEY(MOD_LSFT, KC_2),                // FN13 - @
     ACTION_MODS_KEY(MOD_LSFT, KC_3),                // FN14 - #
     ACTION_MODS_KEY(MOD_LSFT, KC_4),                // FN15 - $
