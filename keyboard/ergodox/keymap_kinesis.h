@@ -209,12 +209,16 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                     D(LSFT),
                     T(MINS),
                     U(LSFT),
+                    // (
+                    D(LSFT), T(9), U(LSFT),
                     // ツ
                     D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
                     T(3),
                     T(0),
                     T(C),
                     T(4), T(ENTER),
+                    // )
+                    D(LSFT), T(0), U(LSFT),
                     // underscore
                     D(LSFT),
                     T(MINS),
@@ -234,9 +238,10 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                     END);
         case MACRO_FLIP:
             return MACRO(
+                    // (
                     D(LSFT), T(9), U(LSFT),
-                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
                     // left hand // ╯
+                    D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
                     T(2),
                     T(5),
                     T(6),
@@ -255,6 +260,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                     D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
                     T(B),
                     T(0), T(ENTER),
+                    // )
                     D(LSFT), T(0), U(LSFT),
                     // right hand // ╯
                     D(LCTL), D(LSFT), T(U), U(LSFT), U(LCTL),
